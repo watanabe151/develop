@@ -1,5 +1,16 @@
+header {
+    background-color: navy;
+}
+
 .header-left img {
-    float:left;
     width:150px;
     height:90px;
+}
+
+.top-wrapper {
+    text-align:center;
+    height:800px;
+    background-position: center 50%;
+    background-size: cover;
+    background-image: url("/hirameki.jpg");
 }
