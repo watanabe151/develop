@@ -1,5 +1,6 @@
 $(function() {
-    console.log("OK");
-    $('#hoge').css('color','red');
+    $('.signup-btn').on('click', function(){
+      console.log('OK');
+    });
   });
 
