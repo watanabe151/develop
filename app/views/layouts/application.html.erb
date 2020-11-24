@@ -19,7 +19,10 @@
         <img src="<%= "/top_image/ArrangeHub.jpg" %>" > 
       </div>
 
-      <div class="header-right">
+      <div class="header-right1">
+        <%= button_to "ログアウト", {controller: 'home', action: 'logout'}, {method: :post, class: "btn btn-primary"} %>
+      </div>
+      <div class="header-right2">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModalCenter">
           会員登録
         </button>
@@ -39,21 +42,29 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+
+              <div class="error-messages">
+              </div>
+
+              <%= form_with model: @user, url: {controller: 'home', action: 'create'}, local: true do |form| %>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="signupInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <label for="signupInputUserName1">User name</label>
+                  <%= form.text_field :name, class: "form-control", id: "signupInputUserName1", placeholder: "Enter username" %>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="signupInputPassword1" placeholder="Password">
+                  <label for="signupInputEmail1">Email address</label>
+                  <%= form.email_field :email, class: "form-control", id: "signupInputEmail1", placeholder: "Enter email" %>
+                </div>
+                <div class="form-group">
+                  <label for="signupInputPassword1">Password</label>
+                  <%= form.password_field :password, class: "form-control", id: "signupInputPassword1", placeholder: "Password" %>
                 </div>
                 <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="signupCheck1">
+                  <%= form.check_box :check, class: "form-check-input", id: "signupCheck1" %>
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
-                <button type="submit" class="btn btn-primary signup-btn">会員登録</button>
-              </form>
+                <%= form.submit "会員登録", class: "btn btn-primary signup-form" %>
+              <% end %>
             </div>
             <div class="modal-footer">
               <small>すでに会員登録済みの方はこちらから→</small>

@@ -1,7 +1,31 @@
 class HomeController < ApplicationController
   def top
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+        flash[:notice] = 'ログインしました'
+        session[:user_id] = @user.id
+        @currentuser = @user
+        render 'about'
+    else
+        render 'top'
+    end
   end
 
   def about
   end
+
+  def logout
+    flash[:notice] = "ログアウトしました"
+    session[:user_id] = nil
+    redirect_to("/")
+  end
+
+private
+    def user_params
+        params.require(:user).permit(:name, :email, :password, :check)
+    end
 end
