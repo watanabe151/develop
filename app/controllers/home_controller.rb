@@ -18,6 +18,19 @@ class HomeController < ApplicationController
   def about
   end
 
+  def login
+    @user = User.find_by(email: params[:email])
+    if @user
+      flash[:notice] = "ログインしました"
+      session[:user_id] = @user.id
+      @current_user = @user
+      render 'about'
+    else
+      @error_message = 'メールアドレスが不正です'
+      render 'top'
+    end
+  end
+
   def logout
     flash[:notice] = "ログアウトしました"
     session[:user_id] = nil
@@ -26,6 +39,6 @@ class HomeController < ApplicationController
 
 private
     def user_params
-        params.require(:user).permit(:name, :email, :password, :check)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :check)
     end
 end

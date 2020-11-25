@@ -43,7 +43,7 @@
             </div>
             <div class="modal-body">
 
-              <div class="error-messages">
+              <div class="signup-error-messages">
               </div>
 
               <%= form_with model: @user, url: {controller: 'home', action: 'create'}, local: true do |form| %>
@@ -58,6 +58,10 @@
                 <div class="form-group">
                   <label for="signupInputPassword1">Password</label>
                   <%= form.password_field :password, class: "form-control", id: "signupInputPassword1", placeholder: "Password" %>
+                </div>
+                <div class="form-group">
+                  <label for="signupInputPassword2">Password</label>
+                  <%= form.password_field :password_confirmation, class: "form-control", id: "signupInputPassword2", placeholder: "Password" %>
                 </div>
                 <div class="form-group form-check">
                   <%= form.check_box :check, class: "form-check-input", id: "signupCheck1" %>
@@ -74,7 +78,7 @@
           </div>
         </div>
       </div>
-      # モーダル部分終了
+      # モーダル部分(会員登録用)終了
 
       # モーダル部分(ログイン用)
       <div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -87,21 +91,25 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+
+              <div class="login-error-messages">
+              </div>
+
+              <%= form_with url: {controlloer: 'home', action: 'login'}, local: true do |form| %>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="loginInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <label for="loginInputEmail1">Email address</label>
+                  <%= form.email_field :email, class: "form-control", id: "loginInputEmail1", placeholder: "Enter email" %>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="loginInputPassword1" placeholder="Password">
+                  <label for="loginInputPassword1">Password</label>
+                  <%= form.password_field :password, class: "form-control", id: "loginInputPassword1", placeholder: "Password" %>
                 </div>
                 <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="loginCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  <%= form.check_box :check, class: "form-check-input", id: "loginCheck1" %>
+                  <label class="form-check-label" for="loginCheck1">Check me out</label>
                 </div>
-                <button type="submit" class="btn btn-primary login-form">ログイン</button>
-              </form>
+                <%= form.submit "ログイン", class: "btn btn-primary login-form" %>
+              <% end %>
             </div>
             <div class="modal-footer">
               <small>会員登録がまだの方はこちらから→</small>
@@ -111,7 +119,7 @@
           </div>
         </div>
       </div>
-      # モーダル部分終了
+      # モーダル部分(ログイン用)終了
     </header>
 
     <% if flash[:notice] %>
