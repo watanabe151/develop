@@ -20,13 +20,13 @@ class HomeController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email])
-    if @user
+    if @user && @user.authenticate(params[:password])
       flash[:notice] = "ログインしました"
       session[:user_id] = @user.id
       @current_user = @user
       render 'about'
     else
-      @error_message = 'メールアドレスが不正です'
+      @error_message = 'メールアドレスまたはパスワードが不正です'
       render 'top'
     end
   end
