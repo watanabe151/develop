@@ -1,6 +1,6 @@
 header {
     height:70px;
-    background-color: navy;
+    background-color: black;
 }
 
 .header-right1 {
@@ -17,7 +17,7 @@ header {
 
 .header-left img {
     float:left;
-    width:150px;
+    width:200px;
     height:70px;
 }
 
@@ -33,10 +33,32 @@ header {
     float:right;
 }
 
+.input-password {
+    align-items: center;
+    display: flex;
+    border: 1px solid lightgray;
+}
+
+.input-password:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#signupInputPassword1{
+    border:none;
+}
+
+#signupInputPassword1:focus {
+    box-shadow:none !important;
+}
+
+.eye-icon{
+    margin-right:5px;
+}
+
 .top-wrapper {
     text-align:center;
     height:800px;
     background-position: center 50%;
     background-size: cover;
-    background-image: url("/hirameki.jpg");
+    background-image: url("/yakei1.jpg");
 }

@@ -16,17 +16,17 @@
   <body>
     <header>
       <div class="header-left">
-        <img src="<%= "/top_image/ArrangeHub.jpg" %>" > 
+        <img src="<%= "/top_image/logo.jpg" %>" > 
       </div>
 
       <div class="header-right1">
-        <%= button_to "ログアウト", {controller: 'home', action: 'logout'}, {method: :post, class: "btn btn-primary"} %>
+        <%= button_to "ログアウト", {controller: 'home', action: 'logout'}, {method: :post, class: "btn btn-dark"} %>
       </div>
       <div class="header-right2">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModalCenter">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#signupModalCenter">
           会員登録
         </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModalCenter">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#loginModalCenter">
           ログイン
         </button>
       </div>
@@ -57,15 +57,18 @@
                 </div>
                 <div class="form-group">
                   <label for="signupInputPassword1">Password</label>
-                  <%= form.password_field :password, class: "form-control", id: "signupInputPassword1", placeholder: "Password" %>
+                  <div class="input-password">
+                    <%= form.password_field :password, class: "form-control", id: "signupInputPassword1", placeholder: "Password" %>
+                    <i class="fa fa-eye-slash fa-border eye-icon"></i>
+                  </div>   
                 </div>
                 <div class="form-group">
-                  <label for="signupInputPassword2">Password</label>
+                  <label for="signupInputPassword2">Confirm Password</label>
                   <%= form.password_field :password_confirmation, class: "form-control", id: "signupInputPassword2", placeholder: "Password" %>
                 </div>
                 <div class="form-group form-check">
                   <%= form.check_box :check, class: "form-check-input", id: "signupCheck1" %>
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  <label class="form-check-label" for="exampleCheck1">入力内容をご確認の上、チェックを入れてください</label>
                 </div>
                 <%= form.submit "会員登録", class: "btn btn-primary signup-form" %>
               <% end %>
@@ -106,7 +109,7 @@
                 </div>
                 <div class="form-group form-check">
                   <%= form.check_box :check, class: "form-check-input", id: "loginCheck1" %>
-                  <label class="form-check-label" for="loginCheck1">Check me out</label>
+                  <label class="form-check-label" for="loginCheck1">入力内容をご確認の上、チェックを入れてください</label>
                 </div>
                 <%= form.submit "ログイン", class: "btn btn-primary login-form" %>
               <% end %>

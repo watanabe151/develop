@@ -49,5 +49,13 @@ $(function() {
       }
     });
 
+    
+    $('#signupInputPassword1').on('focus', function(){
+      $('.input-password').css('box-shadow', '0 0 0 0.2rem rgba(0, 123, 255, 0.25)');
+    });
+
+    $('#signupInputPassword1').on('blur' ,function(){
+      $('.input-password').css('box-shadow', 'none');
+    });
   });
 
